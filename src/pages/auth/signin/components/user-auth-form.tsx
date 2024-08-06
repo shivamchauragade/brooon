@@ -24,7 +24,7 @@ export default function UserAuthForm() {
   const router = useRouter();
   const [loading] = useState(false);
   const defaultValues = {
-    email: 'demo@gmail.com'
+    email: 'admin@malinator.com'
   };
   const form = useForm<UserFormValue>({
     resolver: zodResolver(formSchema),

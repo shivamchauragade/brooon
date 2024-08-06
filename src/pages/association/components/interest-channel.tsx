@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useGetStudents } from '../queries/queries';
+import { useGetAssociation } from '../queries/queries';
 import { useState } from 'react';
 import PaginationSection from '@/components/shared/pagination-section';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
@@ -10,11 +10,11 @@ const InterestChannel = ({ title }: { title: string }) => {
   const [currentPage, setCurrentPage] = useState(page);
   const pageLimit = 6;
   const country = searchParams.get('search') || null;
-  const offset = (currentPage - 1) * pageLimit;
-  const { data } = useGetStudents(offset, pageLimit, country);
-  const users = data?.users;
+  // const offset = (currentPage - 1) * pageLimit;
+  const { data } = useGetAssociation(page, pageLimit, country);
+  const users = data?.associations;
   console.log('users', users);
-  const totalUsers = data?.total_users; //1000
+  const totalUsers = data?.total_associations; //1000
 
   return (
     <div className="flex w-full flex-col rounded-t-3xl bg-background shadow-xl xl:m-7 ">

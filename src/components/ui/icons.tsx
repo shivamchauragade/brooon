@@ -28,7 +28,8 @@ import {
   User,
   User2Icon,
   UserX2Icon,
-  X
+  X,
+  BoxesIcon 
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -54,6 +55,7 @@ export const Icons = {
   add: Plus,
   warning: AlertTriangle,
   user: User,
+  association: BoxesIcon,
   arrowRight: ArrowRight,
   help: HelpCircle,
   pizza: Pizza,

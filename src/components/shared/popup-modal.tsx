@@ -1,28 +1,26 @@
-import { Button } from '@/components/ui/button';
 import { Modal } from '@/components/ui/modal';
-import { Plus } from 'lucide-react';
-import { useState } from 'react';
 import { ScrollArea } from '../ui/scroll-area';
+import { ReactNode } from 'react';
 
 type TPopupModalProps = {
-  onConfirm?: () => void;
-  loading?: boolean;
   renderModal: (onClose: () => void) => React.ReactNode;
+  children: ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
 };
-export default function PopupModal({ renderModal }: TPopupModalProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen(false);
+
+export default function PopupModal({ renderModal, children, isOpen, onClose }: TPopupModalProps) {
   return (
     <>
-      <Button className="text-xs md:text-sm" onClick={() => setIsOpen(true)}>
-        <Plus className="mr-2 h-4 w-4" /> Add New
-      </Button>
+      <div onClick={() => onClose()}>
+        {children}
+      </div>
       <Modal
         isOpen={isOpen}
         onClose={onClose}
         className={'!bg-background !px-1'}
       >
-        <ScrollArea className="h-[80dvh] px-6  ">
+        <ScrollArea className="h-[80dvh] px-6">
           {renderModal(onClose)}
         </ScrollArea>
       </Modal>
